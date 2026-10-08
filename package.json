@@ -1,0 +1,166 @@
+{
+  "name": "cyberchef-vscode",
+  "displayName": "CyberChef for VS Code",
+  "description": "CyberChef encryption, decryption, encoding, decoding, and hashing workbench in the sidebar with in-place editor transforms",
+  "version": "0.1.0",
+  "publisher": "cyberchef",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Formatters"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "cyberchef-sidebar",
+          "title": "CyberChef",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "cyberchef-sidebar": [
+        {
+          "type": "webview",
+          "id": "cyberchef.workbenchView",
+          "name": "CyberChef Workbench"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "cyberchef.openWorkbench",
+        "title": "CyberChef: Open Sidebar Workbench"
+      },
+      {
+        "command": "cyberchef.transformSelection",
+        "title": "CyberChef: Transform Selection..."
+      },
+      {
+        "command": "cyberchef.toBase64",
+        "title": "CyberChef: To Base64"
+      },
+      {
+        "command": "cyberchef.fromBase64",
+        "title": "CyberChef: From Base64"
+      },
+      {
+        "command": "cyberchef.toHex",
+        "title": "CyberChef: To Hex"
+      },
+      {
+        "command": "cyberchef.fromHex",
+        "title": "CyberChef: From Hex"
+      },
+      {
+        "command": "cyberchef.toBinary",
+        "title": "CyberChef: To Binary"
+      },
+      {
+        "command": "cyberchef.fromBinary",
+        "title": "CyberChef: From Binary"
+      },
+      {
+        "command": "cyberchef.toDecimal",
+        "title": "CyberChef: To Decimal"
+      },
+      {
+        "command": "cyberchef.fromDecimal",
+        "title": "CyberChef: From Decimal"
+      },
+      {
+        "command": "cyberchef.rot13",
+        "title": "CyberChef: ROT13"
+      },
+      {
+        "command": "cyberchef.rotN",
+        "title": "CyberChef: ROT-N"
+      },
+      {
+        "command": "cyberchef.xor",
+        "title": "CyberChef: XOR"
+      },
+      {
+        "command": "cyberchef.jwtDecode",
+        "title": "CyberChef: JWT Decode"
+      },
+      {
+        "command": "cyberchef.md5",
+        "title": "CyberChef: MD5 Hash"
+      },
+      {
+        "command": "cyberchef.sha256",
+        "title": "CyberChef: SHA-256 Hash"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "cyberchef.submenu",
+          "group": "1_modification",
+          "when": "editorHasSelection"
+        }
+      ],
+      "cyberchef.submenu": [
+        {
+          "command": "cyberchef.openWorkbench",
+          "group": "navigation@1"
+        },
+        {
+          "command": "cyberchef.transformSelection",
+          "group": "transforms@1"
+        },
+        {
+          "command": "cyberchef.toBase64",
+          "group": "transforms@2"
+        },
+        {
+          "command": "cyberchef.fromBase64",
+          "group": "transforms@3"
+        },
+        {
+          "command": "cyberchef.toHex",
+          "group": "transforms@4"
+        },
+        {
+          "command": "cyberchef.fromHex",
+          "group": "transforms@5"
+        },
+        {
+          "command": "cyberchef.jwtDecode",
+          "group": "transforms@6"
+        },
+        {
+          "command": "cyberchef.rot13",
+          "group": "transforms@7"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "cyberchef.submenu",
+        "label": "CyberChef"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --target=node20",
+    "watch": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --target=node20 --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --import tsx tests/codecs.test.ts tests/registry_and_pipeline.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.20.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
