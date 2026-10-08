@@ -3,7 +3,23 @@
   "displayName": "CyberChef for VS Code",
   "description": "CyberChef encryption, decryption, encoding, decoding, and hashing workbench in the sidebar with in-place editor transforms",
   "version": "0.1.0",
-  "publisher": "cyberchef",
+  "publisher": "BlaiseRodrigues",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "keywords": [
+    "cyberchef",
+    "encoding",
+    "decoding",
+    "encryption",
+    "base64",
+    "base58",
+    "base32",
+    "hex",
+    "jwt",
+    "hashing",
+    "rot13",
+    "xor"
+  ],
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -13,8 +29,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/cyberchef/cyberchef-vscode"
+    "url": "https://github.com/blaiserods26/CyChef-VS"
   },
+  "bugs": {
+    "url": "https://github.com/blaiserods26/CyChef-VS/issues"
+  },
+  "homepage": "https://github.com/blaiserods26/CyChef-VS#readme",
   "main": "./dist/extension.js",
   "activationEvents": [
     "onStartupFinished"
@@ -155,6 +175,7 @@
     ]
   },
   "scripts": {
+    "vscode:prepublish": "npm run build",
     "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --target=node20",
     "watch": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --target=node20 --watch",
     "typecheck": "tsc --noEmit",
