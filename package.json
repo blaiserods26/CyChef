@@ -1,0 +1,192 @@
+{
+  "name": "cychef",
+  "displayName": "CyChef",
+  "description": "CyChef encryption, decryption, encoding, decoding, and hashing workbench in the sidebar with in-place editor transforms",
+  "version": "0.1.0",
+  "publisher": "BlaiseRodrigues",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "keywords": [
+    "cychef",
+    "cyberchef",
+    "encoding",
+    "decoding",
+    "encryption",
+    "base64",
+    "base58",
+    "base32",
+    "hex",
+    "jwt",
+    "hashing",
+    "rot13",
+    "xor"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Formatters"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blaiserods26/CyChef-VS"
+  },
+  "bugs": {
+    "url": "https://github.com/blaiserods26/CyChef-VS/issues"
+  },
+  "homepage": "https://github.com/blaiserods26/CyChef-VS#readme",
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "cychef-sidebar",
+          "title": "CyChef",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "cychef-sidebar": [
+        {
+          "type": "webview",
+          "id": "cychef.workbenchView",
+          "name": "CyChef Workbench"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "cychef.openWorkbench",
+        "title": "CyChef: Open Sidebar Workbench"
+      },
+      {
+        "command": "cychef.transformSelection",
+        "title": "CyChef: Transform Selection..."
+      },
+      {
+        "command": "cychef.toBase64",
+        "title": "CyChef: To Base64"
+      },
+      {
+        "command": "cychef.fromBase64",
+        "title": "CyChef: From Base64"
+      },
+      {
+        "command": "cychef.toHex",
+        "title": "CyChef: To Hex"
+      },
+      {
+        "command": "cychef.fromHex",
+        "title": "CyChef: From Hex"
+      },
+      {
+        "command": "cychef.toBinary",
+        "title": "CyChef: To Binary"
+      },
+      {
+        "command": "cychef.fromBinary",
+        "title": "CyChef: From Binary"
+      },
+      {
+        "command": "cychef.toDecimal",
+        "title": "CyChef: To Decimal"
+      },
+      {
+        "command": "cychef.fromDecimal",
+        "title": "CyChef: From Decimal"
+      },
+      {
+        "command": "cychef.rot13",
+        "title": "CyChef: ROT13"
+      },
+      {
+        "command": "cychef.rotN",
+        "title": "CyChef: ROT-N"
+      },
+      {
+        "command": "cychef.xor",
+        "title": "CyChef: XOR"
+      },
+      {
+        "command": "cychef.jwtDecode",
+        "title": "CyChef: JWT Decode"
+      },
+      {
+        "command": "cychef.md5",
+        "title": "CyChef: MD5 Hash"
+      },
+      {
+        "command": "cychef.sha256",
+        "title": "CyChef: SHA-256 Hash"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "cychef.submenu",
+          "group": "1_modification",
+          "when": "editorHasSelection"
+        }
+      ],
+      "cychef.submenu": [
+        {
+          "command": "cychef.openWorkbench",
+          "group": "navigation@1"
+        },
+        {
+          "command": "cychef.transformSelection",
+          "group": "transforms@1"
+        },
+        {
+          "command": "cychef.toBase64",
+          "group": "transforms@2"
+        },
+        {
+          "command": "cychef.fromBase64",
+          "group": "transforms@3"
+        },
+        {
+          "command": "cychef.toHex",
+          "group": "transforms@4"
+        },
+        {
+          "command": "cychef.fromHex",
+          "group": "transforms@5"
+        },
+        {
+          "command": "cychef.jwtDecode",
+          "group": "transforms@6"
+        },
+        {
+          "command": "cychef.rot13",
+          "group": "transforms@7"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "cychef.submenu",
+        "label": "CyChef"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --target=node20",
+    "watch": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --target=node20 --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --import tsx tests/codecs.test.ts tests/registry_and_pipeline.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.20.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
