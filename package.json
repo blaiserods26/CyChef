@@ -30,12 +30,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/blaiserods26/CyChef-VS"
+    "url": "https://github.com/blaiserods26/CyChef"
   },
   "bugs": {
-    "url": "https://github.com/blaiserods26/CyChef-VS/issues"
+    "url": "https://github.com/blaiserods26/CyChef/issues"
   },
-  "homepage": "https://github.com/blaiserods26/CyChef-VS#readme",
+  "homepage": "https://github.com/blaiserods26/CyChef#readme",
   "main": "./dist/extension.js",
   "activationEvents": [
     "onStartupFinished"
