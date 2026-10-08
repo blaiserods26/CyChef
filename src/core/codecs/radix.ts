@@ -71,8 +71,9 @@ export function toDecimal(bytes: Uint8Array, delimiter: RadixDelimiter = 'Space'
       return parts.join(' ');
     case 'Comma':
       return parts.join(', ');
+    case 'None':
     default:
-      return parts.join(' ');
+      return parts.join('');
   }
 }
 

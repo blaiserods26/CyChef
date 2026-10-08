@@ -59,6 +59,10 @@ describe('Base Encodings', () => {
     const b32 = encodeBase32(input);
     assert.equal(b32, 'IN4WEZLSINUGKZQ=');
     assert.deepEqual(decodeBase32(b32), input);
+
+    assert.throws(() => {
+      decodeBase32('INVALID-CHAR-!@#');
+    }, /Invalid Base32 character/);
   });
 
   test('Base58 Bitcoin alphabet', () => {

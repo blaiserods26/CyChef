@@ -76,8 +76,9 @@ function decodeBase32(str) {
   const result = [];
   for (let i = 0; i < cleaned.length; i++) {
     const idx = B32_ALPHABET.indexOf(cleaned[i]);
-    if (idx === -1)
-      continue;
+    if (idx === -1) {
+      throw new Error(`Invalid Base32 character "${cleaned[i]}"`);
+    }
     value = value << 5 | idx;
     bits += 5;
     if (bits >= 8) {
@@ -316,8 +317,9 @@ function toDecimal(bytes, delimiter = "Space") {
       return parts.join(" ");
     case "Comma":
       return parts.join(", ");
+    case "None":
     default:
-      return parts.join(" ");
+      return parts.join("");
   }
 }
 function fromDecimal(str) {
@@ -1046,13 +1048,17 @@ var EditorTransformer = class _EditorTransformer {
     const textEncoder2 = new TextEncoder();
     const textDecoder2 = new TextDecoder();
     try {
-      await editor.edit(async (editBuilder) => {
-        for (const range of rangesToTransform) {
-          const originalText = editor.document.getText(range);
-          const inputBytes = textEncoder2.encode(originalText);
-          const outputBytes = await op.run(inputBytes, args);
-          const transformedText = textDecoder2.decode(outputBytes);
-          editBuilder.replace(range, transformedText);
+      const replacements = [];
+      for (const range of rangesToTransform) {
+        const originalText = editor.document.getText(range);
+        const inputBytes = textEncoder2.encode(originalText);
+        const outputBytes = await op.run(inputBytes, args);
+        const transformedText = textDecoder2.decode(outputBytes);
+        replacements.push({ range, text: transformedText });
+      }
+      await editor.edit((editBuilder) => {
+        for (const { range, text } of replacements) {
+          editBuilder.replace(range, text);
         }
       });
     } catch (err) {
@@ -1209,29 +1215,13 @@ var WorkbenchViewProvider = class {
           break;
         }
         case "getOperations": {
-          const ops = OperationRegistry.getInstance().getAll().map((op) => ({
-            id: op.id,
-            name: op.name,
-            description: op.description,
-            category: op.category,
-            keywords: op.keywords,
-            args: op.args
-          }));
-          this.sendMessage({ command: "operationsLoaded", operations: ops });
+          this.sendMessage({ command: "operationsLoaded", operations: this.getOperationsList() });
           break;
         }
       }
     });
     setTimeout(() => {
-      const ops = OperationRegistry.getInstance().getAll().map((op) => ({
-        id: op.id,
-        name: op.name,
-        description: op.description,
-        category: op.category,
-        keywords: op.keywords,
-        args: op.args
-      }));
-      this.sendMessage({ command: "operationsLoaded", operations: ops });
+      this.sendMessage({ command: "operationsLoaded", operations: this.getOperationsList() });
       const active = EditorTransformer.getInstance().getActiveText();
       if (active.text && active.isSelection) {
         this.sendMessage({
@@ -1252,6 +1242,16 @@ var WorkbenchViewProvider = class {
         });
       }
     });
+  }
+  getOperationsList() {
+    return OperationRegistry.getInstance().getAll().map((op) => ({
+      id: op.id,
+      name: op.name,
+      description: op.description,
+      category: op.category,
+      keywords: op.keywords,
+      args: op.args
+    }));
   }
   sendMessage(message) {
     this._view?.webview.postMessage(message);

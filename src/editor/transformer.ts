@@ -122,13 +122,19 @@ export class EditorTransformer {
     const textDecoder = new TextDecoder();
 
     try {
-      await editor.edit(async editBuilder => {
-        for (const range of rangesToTransform) {
-          const originalText = editor.document.getText(range);
-          const inputBytes = textEncoder.encode(originalText);
-          const outputBytes = await op.run(inputBytes, args);
-          const transformedText = textDecoder.decode(outputBytes);
-          editBuilder.replace(range, transformedText);
+      // Pre-compute all replacements asynchronously before calling synchronous editor.edit
+      const replacements: { range: vscode.Range; text: string }[] = [];
+      for (const range of rangesToTransform) {
+        const originalText = editor.document.getText(range);
+        const inputBytes = textEncoder.encode(originalText);
+        const outputBytes = await op.run(inputBytes, args);
+        const transformedText = textDecoder.decode(outputBytes);
+        replacements.push({ range, text: transformedText });
+      }
+
+      await editor.edit(editBuilder => {
+        for (const { range, text } of replacements) {
+          editBuilder.replace(range, text);
         }
       });
     } catch (err: any) {

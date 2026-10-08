@@ -53,15 +53,7 @@ export class WorkbenchViewProvider implements vscode.WebviewViewProvider {
         }
 
         case 'getOperations': {
-          const ops = OperationRegistry.getInstance().getAll().map(op => ({
-            id: op.id,
-            name: op.name,
-            description: op.description,
-            category: op.category,
-            keywords: op.keywords,
-            args: op.args
-          }));
-          this.sendMessage({ command: 'operationsLoaded', operations: ops });
+          this.sendMessage({ command: 'operationsLoaded', operations: this.getOperationsList() });
           break;
         }
       }
@@ -69,15 +61,7 @@ export class WorkbenchViewProvider implements vscode.WebviewViewProvider {
 
     // Send operations and current editor selection on initial load
     setTimeout(() => {
-      const ops = OperationRegistry.getInstance().getAll().map(op => ({
-        id: op.id,
-        name: op.name,
-        description: op.description,
-        category: op.category,
-        keywords: op.keywords,
-        args: op.args
-      }));
-      this.sendMessage({ command: 'operationsLoaded', operations: ops });
+      this.sendMessage({ command: 'operationsLoaded', operations: this.getOperationsList() });
 
       const active = EditorTransformer.getInstance().getActiveText();
       if (active.text && active.isSelection) {
@@ -100,6 +84,17 @@ export class WorkbenchViewProvider implements vscode.WebviewViewProvider {
         });
       }
     });
+  }
+
+  private getOperationsList() {
+    return OperationRegistry.getInstance().getAll().map(op => ({
+      id: op.id,
+      name: op.name,
+      description: op.description,
+      category: op.category,
+      keywords: op.keywords,
+      args: op.args
+    }));
   }
 
   public sendMessage(message: any): void {

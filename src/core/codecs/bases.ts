@@ -49,7 +49,9 @@ export function decodeBase32(str: string): Uint8Array {
 
   for (let i = 0; i < cleaned.length; i++) {
     const idx = B32_ALPHABET.indexOf(cleaned[i]);
-    if (idx === -1) continue;
+    if (idx === -1) {
+      throw new Error(`Invalid Base32 character "${cleaned[i]}"`);
+    }
     value = (value << 5) | idx;
     bits += 5;
     if (bits >= 8) {
