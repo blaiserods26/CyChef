@@ -1,4 +1,4 @@
-# CyberChef for VS Code
+# CyChef
 
 A VS Code extension providing an integrated sidebar workbench and editor commands for data encoding, decoding, hashing, and cryptographic transforms inspired by CyberChef.
 

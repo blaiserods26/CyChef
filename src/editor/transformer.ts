@@ -87,7 +87,7 @@ export class EditorTransformer {
 
     const op = OperationRegistry.getInstance().get(opId);
     if (!op) {
-      vscode.window.showErrorMessage(`CyberChef operation "${opId}" not found.`);
+      vscode.window.showErrorMessage(`CyChef operation "${opId}" not found.`);
       return;
     }
 

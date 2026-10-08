@@ -21,14 +21,14 @@ export function activate(context: vscode.ExtensionContext) {
 
   // Focus Sidebar Command
   context.subscriptions.push(
-    vscode.commands.registerCommand('cyberchef.openWorkbench', () => {
-      vscode.commands.executeCommand('workbench.view.extension.cyberchef-sidebar');
+    vscode.commands.registerCommand('cychef.openWorkbench', () => {
+      vscode.commands.executeCommand('workbench.view.extension.cychef-sidebar');
     })
   );
 
   // General Interactive Transform Command
   context.subscriptions.push(
-    vscode.commands.registerCommand('cyberchef.transformSelection', async () => {
+    vscode.commands.registerCommand('cychef.transformSelection', async () => {
       const ops = registry.getAll();
       const pick = await vscode.window.showQuickPick(
         ops.map(op => ({
@@ -36,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
           description: `[${op.category}] ${op.description}`,
           id: op.id
         })),
-        { placeHolder: 'Select CyberChef Operation to apply to selection...' }
+        { placeHolder: 'Select CyChef Operation to apply to selection...' }
       );
 
       if (pick) {
@@ -54,22 +54,22 @@ export function activate(context: vscode.ExtensionContext) {
     );
   };
 
-  registerOpCommand('cyberchef.toBase64', 'to-base64');
-  registerOpCommand('cyberchef.fromBase64', 'from-base64');
-  registerOpCommand('cyberchef.toHex', 'to-hex');
-  registerOpCommand('cyberchef.fromHex', 'from-hex');
-  registerOpCommand('cyberchef.toBinary', 'to-binary');
-  registerOpCommand('cyberchef.fromBinary', 'from-binary');
-  registerOpCommand('cyberchef.toDecimal', 'to-decimal');
-  registerOpCommand('cyberchef.fromDecimal', 'from-decimal');
-  registerOpCommand('cyberchef.rot13', 'rot13');
-  registerOpCommand('cyberchef.rotN', 'rot-n');
-  registerOpCommand('cyberchef.xor', 'xor');
-  registerOpCommand('cyberchef.jwtDecode', 'jwt-decode');
-  registerOpCommand('cyberchef.md5', 'md5');
-  registerOpCommand('cyberchef.sha256', 'sha256');
+  registerOpCommand('cychef.toBase64', 'to-base64');
+  registerOpCommand('cychef.fromBase64', 'from-base64');
+  registerOpCommand('cychef.toHex', 'to-hex');
+  registerOpCommand('cychef.fromHex', 'from-hex');
+  registerOpCommand('cychef.toBinary', 'to-binary');
+  registerOpCommand('cychef.fromBinary', 'from-binary');
+  registerOpCommand('cychef.toDecimal', 'to-decimal');
+  registerOpCommand('cychef.fromDecimal', 'from-decimal');
+  registerOpCommand('cychef.rot13', 'rot13');
+  registerOpCommand('cychef.rotN', 'rot-n');
+  registerOpCommand('cychef.xor', 'xor');
+  registerOpCommand('cychef.jwtDecode', 'jwt-decode');
+  registerOpCommand('cychef.md5', 'md5');
+  registerOpCommand('cychef.sha256', 'sha256');
 
-  console.log('CyberChef for VS Code is now active.');
+  console.log('CyChef is now active.');
 }
 
 export function deactivate() {}

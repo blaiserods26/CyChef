@@ -1,12 +1,13 @@
 {
-  "name": "cyberchef-vscode",
-  "displayName": "CyberChef for VS Code",
-  "description": "CyberChef encryption, decryption, encoding, decoding, and hashing workbench in the sidebar with in-place editor transforms",
+  "name": "cychef",
+  "displayName": "CyChef",
+  "description": "CyChef encryption, decryption, encoding, decoding, and hashing workbench in the sidebar with in-place editor transforms",
   "version": "0.1.0",
   "publisher": "BlaiseRodrigues",
   "license": "MIT",
   "icon": "media/icon.png",
   "keywords": [
+    "cychef",
     "cyberchef",
     "encoding",
     "decoding",
@@ -43,134 +44,134 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "cyberchef-sidebar",
-          "title": "CyberChef",
+          "id": "cychef-sidebar",
+          "title": "CyChef",
           "icon": "media/icon.svg"
         }
       ]
     },
     "views": {
-      "cyberchef-sidebar": [
+      "cychef-sidebar": [
         {
           "type": "webview",
-          "id": "cyberchef.workbenchView",
-          "name": "CyberChef Workbench"
+          "id": "cychef.workbenchView",
+          "name": "CyChef Workbench"
         }
       ]
     },
     "commands": [
       {
-        "command": "cyberchef.openWorkbench",
-        "title": "CyberChef: Open Sidebar Workbench"
+        "command": "cychef.openWorkbench",
+        "title": "CyChef: Open Sidebar Workbench"
       },
       {
-        "command": "cyberchef.transformSelection",
-        "title": "CyberChef: Transform Selection..."
+        "command": "cychef.transformSelection",
+        "title": "CyChef: Transform Selection..."
       },
       {
-        "command": "cyberchef.toBase64",
-        "title": "CyberChef: To Base64"
+        "command": "cychef.toBase64",
+        "title": "CyChef: To Base64"
       },
       {
-        "command": "cyberchef.fromBase64",
-        "title": "CyberChef: From Base64"
+        "command": "cychef.fromBase64",
+        "title": "CyChef: From Base64"
       },
       {
-        "command": "cyberchef.toHex",
-        "title": "CyberChef: To Hex"
+        "command": "cychef.toHex",
+        "title": "CyChef: To Hex"
       },
       {
-        "command": "cyberchef.fromHex",
-        "title": "CyberChef: From Hex"
+        "command": "cychef.fromHex",
+        "title": "CyChef: From Hex"
       },
       {
-        "command": "cyberchef.toBinary",
-        "title": "CyberChef: To Binary"
+        "command": "cychef.toBinary",
+        "title": "CyChef: To Binary"
       },
       {
-        "command": "cyberchef.fromBinary",
-        "title": "CyberChef: From Binary"
+        "command": "cychef.fromBinary",
+        "title": "CyChef: From Binary"
       },
       {
-        "command": "cyberchef.toDecimal",
-        "title": "CyberChef: To Decimal"
+        "command": "cychef.toDecimal",
+        "title": "CyChef: To Decimal"
       },
       {
-        "command": "cyberchef.fromDecimal",
-        "title": "CyberChef: From Decimal"
+        "command": "cychef.fromDecimal",
+        "title": "CyChef: From Decimal"
       },
       {
-        "command": "cyberchef.rot13",
-        "title": "CyberChef: ROT13"
+        "command": "cychef.rot13",
+        "title": "CyChef: ROT13"
       },
       {
-        "command": "cyberchef.rotN",
-        "title": "CyberChef: ROT-N"
+        "command": "cychef.rotN",
+        "title": "CyChef: ROT-N"
       },
       {
-        "command": "cyberchef.xor",
-        "title": "CyberChef: XOR"
+        "command": "cychef.xor",
+        "title": "CyChef: XOR"
       },
       {
-        "command": "cyberchef.jwtDecode",
-        "title": "CyberChef: JWT Decode"
+        "command": "cychef.jwtDecode",
+        "title": "CyChef: JWT Decode"
       },
       {
-        "command": "cyberchef.md5",
-        "title": "CyberChef: MD5 Hash"
+        "command": "cychef.md5",
+        "title": "CyChef: MD5 Hash"
       },
       {
-        "command": "cyberchef.sha256",
-        "title": "CyberChef: SHA-256 Hash"
+        "command": "cychef.sha256",
+        "title": "CyChef: SHA-256 Hash"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "submenu": "cyberchef.submenu",
+          "submenu": "cychef.submenu",
           "group": "1_modification",
           "when": "editorHasSelection"
         }
       ],
-      "cyberchef.submenu": [
+      "cychef.submenu": [
         {
-          "command": "cyberchef.openWorkbench",
+          "command": "cychef.openWorkbench",
           "group": "navigation@1"
         },
         {
-          "command": "cyberchef.transformSelection",
+          "command": "cychef.transformSelection",
           "group": "transforms@1"
         },
         {
-          "command": "cyberchef.toBase64",
+          "command": "cychef.toBase64",
           "group": "transforms@2"
         },
         {
-          "command": "cyberchef.fromBase64",
+          "command": "cychef.fromBase64",
           "group": "transforms@3"
         },
         {
-          "command": "cyberchef.toHex",
+          "command": "cychef.toHex",
           "group": "transforms@4"
         },
         {
-          "command": "cyberchef.fromHex",
+          "command": "cychef.fromHex",
           "group": "transforms@5"
         },
         {
-          "command": "cyberchef.jwtDecode",
+          "command": "cychef.jwtDecode",
           "group": "transforms@6"
         },
         {
-          "command": "cyberchef.rot13",
+          "command": "cychef.rot13",
           "group": "transforms@7"
         }
       ]
     },
     "submenus": [
       {
-        "id": "cyberchef.submenu",
-        "label": "CyberChef"
+        "id": "cychef.submenu",
+        "label": "CyChef"
       }
     ]
   },

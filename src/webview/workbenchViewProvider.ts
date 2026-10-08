@@ -5,7 +5,7 @@ import { executeRecipe, RecipeStep } from '../core/pipeline.js';
 import { EditorTransformer } from '../editor/transformer.js';
 
 export class WorkbenchViewProvider implements vscode.WebviewViewProvider {
-  public static readonly viewType = 'cyberchef.workbenchView';
+  public static readonly viewType = 'cychef.workbenchView';
   private _view?: vscode.WebviewView;
 
   constructor(private readonly _extensionUri: vscode.Uri) {}
@@ -172,7 +172,7 @@ export class WorkbenchViewProvider implements vscode.WebviewViewProvider {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CyberChef Workbench</title>
+  <title>CyChef Workbench</title>
   <style>
     :root {
       --bg: var(--vscode-editor-background);
@@ -421,7 +421,7 @@ export class WorkbenchViewProvider implements vscode.WebviewViewProvider {
 </head>
 <body>
   <div class="header">
-    <h2>CyberChef</h2>
+    <h2>CyChef</h2>
     <div class="mode-switch">
       <button id="mode-quick" class="mode-btn active" onclick="setMode('quick')">Quick</button>
       <button id="mode-recipe" class="mode-btn" onclick="setMode('recipe')">Recipe</button>

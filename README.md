@@ -1,18 +1,18 @@
-# CyberChef for VS Code 🧑‍🍳
+# CyChef 🧑‍🍳
 
-A fast, lightweight, and offline **CyberChef** workbench inside your VS Code sidebar with instant **in-place editor transforms**.
+A fast, lightweight, and offline **CyberChef-inspired** workbench inside your VS Code sidebar with instant **in-place editor transforms**.
 
 ---
 
 ## 🚀 Features
 
-- **Integrated Sidebar Workbench**: Open the CyberChef workbench directly in the VS Code Activity Bar without switching to an external browser tab.
+- **Integrated Sidebar Workbench**: Open the CyChef workbench directly in the VS Code Activity Bar without switching to an external browser tab.
 - **Dual Mode**:
   - **⚡ Quick Transform Mode**: One-click encode, decode, hash, or cipher with instant parameter controls.
   - **🧪 Recipe Mode**: Chain multiple operations sequentially (`From Hex` ➔ `XOR` ➔ `To Base64`) with reordering, toggles, and step-by-step preview.
 - **✏️ In-Place Editor Replacement**:
   - Highlight any text in your editor, click **"Replace in Editor"** in the sidebar, and watch the text update instantly in your document with full undo/redo support.
-  - Right-click text selection ➔ choose **CyberChef** ➔ apply common transforms directly.
+  - Right-click text selection ➔ choose **CyChef** ➔ apply common transforms directly.
 - **Auto-Sync & Auto-Bake**:
   - Automatically loads your active editor's selection into the Input panel.
   - Live preview recalculates as you type or adjust parameters.
@@ -56,10 +56,10 @@ A fast, lightweight, and offline **CyberChef** workbench inside your VS Code sid
 ## ⌨️ Commands & Shortcuts
 
 Access via **Command Palette** (`Ctrl+Shift+P` / `Cmd+Shift+P`):
-- `CyberChef: Open Sidebar Workbench`
-- `CyberChef: Transform Selection...` (fuzzy search across all operations)
-- `CyberChef: To Base64` / `From Base64`
-- `CyberChef: To Hex` / `From Hex`
-- `CyberChef: JWT Decode`
-- `CyberChef: ROT13`
-- `CyberChef: MD5 Hash` / `SHA-256 Hash`
+- `CyChef: Open Sidebar Workbench`
+- `CyChef: Transform Selection...` (fuzzy search across all operations)
+- `CyChef: To Base64` / `From Base64`
+- `CyChef: To Hex` / `From Hex`
+- `CyChef: JWT Decode`
+- `CyChef: ROT13`
+- `CyChef: MD5 Hash` / `SHA-256 Hash`

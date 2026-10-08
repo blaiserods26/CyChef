@@ -1022,7 +1022,7 @@ var EditorTransformer = class _EditorTransformer {
     }
     const op = OperationRegistry.getInstance().get(opId);
     if (!op) {
-      vscode.window.showErrorMessage(`CyberChef operation "${opId}" not found.`);
+      vscode.window.showErrorMessage(`CyChef operation "${opId}" not found.`);
       return;
     }
     const args = { ...preArgs };
@@ -1182,7 +1182,7 @@ var WorkbenchViewProvider = class {
   constructor(_extensionUri) {
     this._extensionUri = _extensionUri;
   }
-  static viewType = "cyberchef.workbenchView";
+  static viewType = "cychef.workbenchView";
   _view;
   resolveWebviewView(webviewView, _context, _token) {
     this._view = webviewView;
@@ -1320,7 +1320,7 @@ var WorkbenchViewProvider = class {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CyberChef Workbench</title>
+  <title>CyChef Workbench</title>
   <style>
     :root {
       --bg: var(--vscode-editor-background);
@@ -1569,7 +1569,7 @@ var WorkbenchViewProvider = class {
 </head>
 <body>
   <div class="header">
-    <h2>CyberChef</h2>
+    <h2>CyChef</h2>
     <div class="mode-switch">
       <button id="mode-quick" class="mode-btn active" onclick="setMode('quick')">Quick</button>
       <button id="mode-recipe" class="mode-btn" onclick="setMode('recipe')">Recipe</button>
@@ -1979,12 +1979,12 @@ function activate(context) {
     )
   );
   context.subscriptions.push(
-    vscode3.commands.registerCommand("cyberchef.openWorkbench", () => {
-      vscode3.commands.executeCommand("workbench.view.extension.cyberchef-sidebar");
+    vscode3.commands.registerCommand("cychef.openWorkbench", () => {
+      vscode3.commands.executeCommand("workbench.view.extension.cychef-sidebar");
     })
   );
   context.subscriptions.push(
-    vscode3.commands.registerCommand("cyberchef.transformSelection", async () => {
+    vscode3.commands.registerCommand("cychef.transformSelection", async () => {
       const ops = registry.getAll();
       const pick = await vscode3.window.showQuickPick(
         ops.map((op) => ({
@@ -1992,7 +1992,7 @@ function activate(context) {
           description: `[${op.category}] ${op.description}`,
           id: op.id
         })),
-        { placeHolder: "Select CyberChef Operation to apply to selection..." }
+        { placeHolder: "Select CyChef Operation to apply to selection..." }
       );
       if (pick) {
         await transformer.transformSelection(pick.id);
@@ -2006,21 +2006,21 @@ function activate(context) {
       })
     );
   };
-  registerOpCommand("cyberchef.toBase64", "to-base64");
-  registerOpCommand("cyberchef.fromBase64", "from-base64");
-  registerOpCommand("cyberchef.toHex", "to-hex");
-  registerOpCommand("cyberchef.fromHex", "from-hex");
-  registerOpCommand("cyberchef.toBinary", "to-binary");
-  registerOpCommand("cyberchef.fromBinary", "from-binary");
-  registerOpCommand("cyberchef.toDecimal", "to-decimal");
-  registerOpCommand("cyberchef.fromDecimal", "from-decimal");
-  registerOpCommand("cyberchef.rot13", "rot13");
-  registerOpCommand("cyberchef.rotN", "rot-n");
-  registerOpCommand("cyberchef.xor", "xor");
-  registerOpCommand("cyberchef.jwtDecode", "jwt-decode");
-  registerOpCommand("cyberchef.md5", "md5");
-  registerOpCommand("cyberchef.sha256", "sha256");
-  console.log("CyberChef for VS Code is now active.");
+  registerOpCommand("cychef.toBase64", "to-base64");
+  registerOpCommand("cychef.fromBase64", "from-base64");
+  registerOpCommand("cychef.toHex", "to-hex");
+  registerOpCommand("cychef.fromHex", "from-hex");
+  registerOpCommand("cychef.toBinary", "to-binary");
+  registerOpCommand("cychef.fromBinary", "from-binary");
+  registerOpCommand("cychef.toDecimal", "to-decimal");
+  registerOpCommand("cychef.fromDecimal", "from-decimal");
+  registerOpCommand("cychef.rot13", "rot13");
+  registerOpCommand("cychef.rotN", "rot-n");
+  registerOpCommand("cychef.xor", "xor");
+  registerOpCommand("cychef.jwtDecode", "jwt-decode");
+  registerOpCommand("cychef.md5", "md5");
+  registerOpCommand("cychef.sha256", "sha256");
+  console.log("CyChef is now active.");
 }
 function deactivate() {
 }
