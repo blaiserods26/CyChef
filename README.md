@@ -2,8 +2,6 @@
 
 A fast, lightweight, and offline **CyberChef** workbench inside your VS Code sidebar with instant **in-place editor transforms**.
 
-![CyberChef Sidebar](media/icon.svg)
-
 ---
 
 ## 🚀 Features
